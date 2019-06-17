@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CompanyList } from './companies/company-list.component';
 import { CompanyEdit } from './companies/company-edit-component';
+import { CompanyDelete } from './companies/company-delete-component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CompanyEdit } from './companies/company-edit-component';
     CounterComponent,
     FetchDataComponent,
     CompanyList,
-    CompanyEdit
+    CompanyEdit,
+    CompanyDelete
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +35,7 @@ import { CompanyEdit } from './companies/company-edit-component';
       { path: 'company-list', component: CompanyList },
       { path: 'add-new-company', component: CompanyEdit },
       { path: 'company-edit/:id', component: CompanyEdit },
+      { path: 'company-delete/:id', component: CompanyDelete },
     ])
   ],
   providers: [],

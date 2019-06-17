@@ -1,0 +1,25 @@
+<h1>Delete company</h1>
+<form (submit)="submit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" [value]="company.name" readonly>
+  </div>
+  <div class="form-group">
+    <label for="exchange">Exchange</label>
+    <input type="text" class="form-control" id="exchange" placeholder="Enter exchange" [value]="company.exchange" readonly>
+  </div>
+  <div class="form-group">
+    <label for="ticker">Ticker</label>
+    <input type="text" class="form-control" id="ticker" placeholder="Enter ticker" [value]="company.ticker" readonly>
+  </div>
+  <div class="form-group">
+    <label for="isin">ISIN</label>
+    <input type="text" class="form-control" id="isin" placeholder="Enter ISIN" [value]="company.isin" readonly>
+  </div>
+  <div class="form-group">
+    <label for="website">Website</label>
+    <input type="text" class="form-control" id="website" placeholder="Enter website" [value]="company.website" readonly>
+  </div>
+  <button type="submit" class="btn btn-danger">Delete</button>
+  <a [routerLink]='["/company-list"]' class="btn btn-light m-1">Back</a>
+</form>

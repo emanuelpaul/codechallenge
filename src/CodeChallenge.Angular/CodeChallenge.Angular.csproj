@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\alert\alert.component.ts" />
+    <None Remove="ClientApp\src\app\alert\alert.service.ts" />
+    <None Remove="ClientApp\src\app\alert\alert.ts" />
+    <None Remove="ClientApp\src\app\companies\company-delete-component.ts" />
     <None Remove="ClientApp\src\app\companies\company-edit-component.ts" />
     <None Remove="ClientApp\src\app\companies\company-list.component.ts" />
     <None Remove="ClientApp\src\app\companies\company.service.ts" />
@@ -32,7 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\alert\alert.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\alert\alert.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\alert\alert.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-edit-component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\companies\company-delete-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.ts" />

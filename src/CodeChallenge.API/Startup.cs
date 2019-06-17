@@ -43,6 +43,8 @@ namespace CodeChallenge.API
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            services.AddCors();
+
             services.AddMvc()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CompanyForAddDtoValidator>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -86,6 +88,7 @@ namespace CodeChallenge.API
                 cfg.AllowAnyOrigin();
                 cfg.AllowAnyMethod();
                 cfg.AllowAnyHeader();
+                cfg.AllowCredentials();
             });
 
             app.UseMvc();
