@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CompanyList } from './companies/company-list.component';
 import { CompanyEdit } from './companies/company-edit-component';
 import { CompanyDelete } from './companies/company-delete-component';
@@ -20,8 +18,6 @@ import { AlertComponent } from './alert/alert.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     CompanyList,
     CompanyEdit,
     CompanyDelete,
@@ -33,8 +29,6 @@ import { AlertComponent } from './alert/alert.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'company-list', component: CompanyList },
       { path: 'add-new-company', component: CompanyEdit },
       { path: 'company-edit/:id', component: CompanyEdit },
