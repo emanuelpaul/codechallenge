@@ -88,6 +88,7 @@ namespace CodeChallenge.API
                     In = "header",
                     Type = "apiKey"
                 });
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
         }
 
@@ -119,6 +120,8 @@ namespace CodeChallenge.API
                 cfg.AllowAnyHeader();
                 cfg.AllowCredentials();
             });
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }
