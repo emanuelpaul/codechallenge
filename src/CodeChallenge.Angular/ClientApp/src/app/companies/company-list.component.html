@@ -1,0 +1,30 @@
+<h1>Company list</h1>
+
+<a [routerLink]='["/add-new-company"]' class="float-right btn btn-primary m-1">Add new company</a>
+
+<p *ngIf="!companies"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="companies">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Exchange</th>
+      <th>Ticker</th>
+      <th>ISIN</th>
+      <th>Website</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies">
+      <td>{{ company.name }}</td>
+      <td>{{ company.exchange }}</td>
+      <td>{{ company.ticker }}</td>
+      <td>{{ company.isin }}</td>
+      <td>{{ company.website }}</td>
+      <td><a [routerLink]='["/company-edit", company.companyId]' class="btn btn-light">Edit</a></td>
+      <td><a [routerLink]='["/company-delete", company.companyId]' class="btn btn-danger">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
