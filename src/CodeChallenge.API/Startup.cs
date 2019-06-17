@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
+using CodeChallenge.API.Infrastructure;
 using CodeChallenge.API.Persistence;
 using CodeChallenge.API.Services.Abstract;
 using CodeChallenge.API.Services.Concrete;
@@ -19,6 +20,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+
+[assembly: ApiConventionType(typeof(CodeChallengeApiConventions))]
 
 namespace CodeChallenge.API
 {
