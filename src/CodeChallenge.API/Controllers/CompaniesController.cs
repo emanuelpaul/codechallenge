@@ -54,6 +54,12 @@ namespace CodeChallenge.API.Controllers
                 return NotFound();
             }
 
+            if(!await _companyService.CanIsinByUsed(companyForUpdate.Isin, id))
+            {
+                ModelState.AddModelError(nameof(companyForUpdate.Isin), "This ISIN is already used!");
+                return ValidationProblem();
+            }
+
             Company company = _mapper.Map<Company>(companyForUpdate);
 
             await _companyService.UpdateAsync(id, company);

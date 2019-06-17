@@ -20,6 +20,6 @@ namespace CodeChallenge.API.Services.Abstract
 
         Task<bool> Exists(int id);
 
-        Task<bool> Exists(string isin);
+        Task<bool> CanIsinByUsed(string isin, int? existingCompanyId);
     }
 }

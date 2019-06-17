@@ -49,7 +49,18 @@ namespace CodeChallenge.API.Services.Concrete
 
         public Task<bool> Exists(int id) => _dbContext.Companies.AnyAsync(x => x.CompanyId == id);
 
-        public Task<bool> Exists(string isin) =>
-            _dbContext.Companies.AnyAsync(x => x.Isin == isin);
+        public async Task<bool> CanIsinByUsed(string isin, int? existingCompanyId)
+        {
+            if (existingCompanyId != null)
+            {
+                Company company = await GetByIsinAsync(isin);
+                if (company != null && company.CompanyId != existingCompanyId)
+                {
+                    return false;
+                }
+                return true;
+            }
+            return !await _dbContext.Companies.AnyAsync(x => x.Isin == isin);
+        }
     }
 }

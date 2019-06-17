@@ -1,9 +1,7 @@
 ﻿namespace CodeChallenge.API.DTOs
 {
     public class CompanyForUpdateDto
-    {
-        public int CompanyId { get; set; }
-
+    { 
         public string Name { get; set; }
 
         public string Exchange { get; set; }
