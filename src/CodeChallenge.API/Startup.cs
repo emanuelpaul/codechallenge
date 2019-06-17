@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using CodeChallenge.API.Persistence;
+using CodeChallenge.API.Services.Abstract;
+using CodeChallenge.API.Services.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +32,10 @@ namespace CodeChallenge.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CodeChallengeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CodeChallengeDb")));
+
+            services.AddScoped<ICompanyService, CompanyService>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
