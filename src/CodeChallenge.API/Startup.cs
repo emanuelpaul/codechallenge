@@ -7,6 +7,8 @@ using AutoMapper;
 using CodeChallenge.API.Persistence;
 using CodeChallenge.API.Services.Abstract;
 using CodeChallenge.API.Services.Concrete;
+using CodeChallenge.API.Validation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +39,9 @@ namespace CodeChallenge.API
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CompanyForAddDtoValidator>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
