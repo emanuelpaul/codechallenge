@@ -9,6 +9,10 @@ namespace CodeChallenge.API.Automapper
         public CompanyProfile()
         {
             CreateMap<Company, CompanyDto>();
+
+            CreateMap<CompanyForAddDto, Company>();
+
+            CreateMap<CompanyForUpdateDto, Company>();
         }
     }
 }

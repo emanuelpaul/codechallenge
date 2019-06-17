@@ -45,5 +45,32 @@ namespace CodeChallenge.API.Controllers
 
             return NotFound();
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CompanyDto>> Update(int id, CompanyForUpdateDto companyForUpdate)
+        {
+            if (!await _companyService.Exists(id))
+            {
+                return NotFound();
+            }
+
+            Company company = _mapper.Map<Company>(companyForUpdate);
+
+            await _companyService.UpdateAsync(id, company);
+
+            return Ok(_mapper.Map<CompanyDto>(company));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!await _companyService.Exists(id))
+            {
+                return NotFound();
+            }
+
+            await _companyService.DeleteAsync(id);
+            return NoContent();
+        }
     }
 }
