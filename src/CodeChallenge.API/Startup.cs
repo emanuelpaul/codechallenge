@@ -10,15 +10,19 @@ using CodeChallenge.API.Services.Abstract;
 using CodeChallenge.API.Services.Concrete;
 using CodeChallenge.API.Validation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 [assembly: ApiConventionType(typeof(CodeChallengeApiConventions))]
@@ -37,15 +41,40 @@ namespace CodeChallenge.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            JwtConfigSection jwtConfig = Configuration.GetSection("jwt").Get<JwtConfigSection>();
+            services.AddSingleton(jwtConfig);
+
             services.AddDbContext<CodeChallengeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CodeChallengeDb")));
 
             services.AddScoped<ICompanyService, CompanyService>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = jwtConfig.Issuer,
+                    ValidAudience = jwtConfig.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(jwtConfig.Key)),
+                };
+            });
+
             services.AddCors();
 
             services.AddMvc()
+                .AddMvcOptions(options =>
+                {
+                    AuthorizationPolicy policy = new AuthorizationPolicyBuilder()
+                         .RequireAuthenticatedUser()
+                         .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                })
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CompanyForAddDtoValidator>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
