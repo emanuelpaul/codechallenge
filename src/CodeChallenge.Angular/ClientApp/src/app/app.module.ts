@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CompanyList } from './companies/company-list.component';
 import { CompanyEdit } from './companies/company-edit-component';
 import { CompanyDelete } from './companies/company-delete-component';
+import { HttpErrorInterceptor } from './http-interceptors/error-interceptor';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CompanyDelete } from './companies/company-delete-component';
     FetchDataComponent,
     CompanyList,
     CompanyEdit,
-    CompanyDelete
+    CompanyDelete,
+    AlertComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +41,9 @@ import { CompanyDelete } from './companies/company-delete-component';
       { path: 'company-delete/:id', component: CompanyDelete },
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

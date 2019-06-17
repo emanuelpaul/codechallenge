@@ -33,6 +33,7 @@
     <None Remove="ClientApp\src\app\companies\company-list.component.ts" />
     <None Remove="ClientApp\src\app\companies\company.service.ts" />
     <None Remove="ClientApp\src\app\companies\company.ts" />
+    <None Remove="ClientApp\src\app\http-interceptors\error-interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\http-interceptors\error-interceptor.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
