@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CompanyList } from './companies/company-list.component';
+import { CompanyEdit } from './companies/company-edit-component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CompanyList } from './companies/company-list.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    CompanyList
+    CompanyList,
+    CompanyEdit
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +31,8 @@ import { CompanyList } from './companies/company-list.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'company-list', component: CompanyList },
+      { path: 'add-new-company', component: CompanyEdit },
+      { path: 'company-edit/:id', component: CompanyEdit },
     ])
   ],
   providers: [],

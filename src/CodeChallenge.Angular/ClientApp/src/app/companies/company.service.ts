@@ -16,18 +16,18 @@ export class CompanyService {
   }
 
   getCompanyById(id: number): Observable<ICompany> {
-    return this.httpClient.get<ICompany>(`http://localhost:5000/api/companies/${id}`);
+    return this.httpClient.get<ICompany>(`${this.baseUrl}/companies/${id}`);
   }
 
   updateCompany(id: number, company: ICompany): Observable<Object> {
-    return this.httpClient.put(`http://localhost:5000/api/companies/${id}`, company);
+    return this.httpClient.put(`${this.baseUrl}/companies/${id}`, company);
   }
 
   addCompany(company: ICompany): Observable<ICompany> {
-    return this.httpClient.post<ICompany>('http://localhost:5000/api/companies', company);
+    return this.httpClient.post<ICompany>(`${this.baseUrl}/companies`, company);
   }
 
   deleteCompany(companyId: number): Observable<Object> {
-    return this.httpClient.delete(`http://localhost:5000/api/companies/${companyId}`);
+    return this.httpClient.delete(`${this.baseUrl}/companies/${companyId}`);
   }
 }

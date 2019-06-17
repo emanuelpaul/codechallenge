@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -25,12 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\companies\company-edit-component.ts" />
     <None Remove="ClientApp\src\app\companies\company-list.component.ts" />
     <None Remove="ClientApp\src\app\companies\company.service.ts" />
     <None Remove="ClientApp\src\app\companies\company.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\companies\company-edit-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.ts" />
