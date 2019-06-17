@@ -10,17 +10,17 @@
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "Companies",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "commandName": "IISExpress",
+        "launchBrowser": true,
+        "launchUrl": "swagger/index.html",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     },
     "CodeChallenge.API": {
         "commandName": "Project",
         "launchBrowser": true,
-        "launchUrl": "Companies",
+        "launchUrl": "swagger/index.html",
         "applicationUrl": "https://localhost:44302;http://localhost:58849",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"

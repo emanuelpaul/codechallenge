@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CodeChallenge.API
 {
@@ -42,6 +43,18 @@ namespace CodeChallenge.API
             services.AddMvc()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CompanyForAddDtoValidator>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "CodeChallenge API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\". Get token from POST /Account/Login",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +70,20 @@ namespace CodeChallenge.API
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CodeChallenge API V1");
+            });
+
+            app.UseCors(cfg =>
+            {
+                cfg.AllowAnyOrigin();
+                cfg.AllowAnyMethod();
+                cfg.AllowAnyHeader();
+            });
 
             app.UseMvc();
         }
