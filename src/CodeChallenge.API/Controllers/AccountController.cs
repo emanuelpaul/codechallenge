@@ -14,7 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace CodeChallenge.API.Controllers
 {
     [ApiController]
-    [Route("api/Account")]
+    [Route("Account")]
     public class AccountController : ControllerBase
     {
         private readonly JwtConfigSection _jwtConfig;

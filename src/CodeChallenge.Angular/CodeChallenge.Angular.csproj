@@ -28,24 +28,32 @@
     <None Remove="ClientApp\src\app\alert\alert.component.ts" />
     <None Remove="ClientApp\src\app\alert\alert.service.ts" />
     <None Remove="ClientApp\src\app\alert\alert.ts" />
+    <None Remove="ClientApp\src\app\authentication\authentication.service.ts" />
+    <None Remove="ClientApp\src\app\authentication\login.component.ts" />
+    <None Remove="ClientApp\src\app\authentication\LoginInfo.ts" />
     <None Remove="ClientApp\src\app\companies\company-delete-component.ts" />
     <None Remove="ClientApp\src\app\companies\company-edit-component.ts" />
     <None Remove="ClientApp\src\app\companies\company-list.component.ts" />
     <None Remove="ClientApp\src\app\companies\company.service.ts" />
     <None Remove="ClientApp\src\app\companies\company.ts" />
     <None Remove="ClientApp\src\app\http-interceptors\error-interceptor.ts" />
+    <None Remove="ClientApp\src\app\http-interceptors\jwt-interceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\alert\alert.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\alert\alert.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\alert\alert.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\authentication\authentication.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\authentication\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\authentication\LoginInfo.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-edit-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-delete-component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\companies\company.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\http-interceptors\error-interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\http-interceptors\jwt-interceptor.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
