@@ -13,12 +13,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
       let error = err.error.message || err.statusText;
-
+      this.alertService.clear();
       if (err.status !== 401) {
         if (err.status == 400) {
           if (err.error.errors) {
             error = '';
-            this.alertService.clear();
             for (let fieldName in err.error.errors) {
               for (let errorText of err.error.errors[fieldName]) {
                 this.alertService.error(errorText);

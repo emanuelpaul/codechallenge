@@ -1,8 +1,6 @@
 <h1>Company list</h1>
 
-<a [routerLink]='["/add-new-company"]' class="float-right btn btn-primary m-1">Add new company</a>
-
-<p *ngIf="!companies"><em>Loading...</em></p>
+<a [routerLink]='["/add-new-company"]' class="float-right btn btn-primary m-1" *ngIf="companies">Add new company</a>
 
 <table class='table table-striped' *ngIf="companies">
   <thead>
