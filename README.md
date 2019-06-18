@@ -1,10 +1,10 @@
 ## Description
 * Solution has 4 projects
 * API - used for companies CRUD, writes to a sql database, secured using JWT
-  * For simplicity users are now hardcoded but asp.net net core identity can be added
+  * For simplicity users are now hardcoded but asp.net net core identity can be added for example
     * Users: Username = "heisenberg", Password = "IAmTheOneWhoKnocks" and Username = "tyrion", Password="IDrinkAndIKnowThings"
   * Swagger and Swagger UI are used in API
-* Angular App - UI used for companies CRUD talk to API. User neeeds to be logged in to be able to access companies
+* Angular App - UI used for companies CRUD, it uses the API. User neeeds to be logged in to be able to access companies.
 * Database project - used to retain information about database structure and to seed data
 * Unit tests - has some unit tests, more are needed for better coverage
 
