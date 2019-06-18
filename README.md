@@ -1,3 +1,13 @@
+## Description
+* Solution has 4 projects
+* API - used for companies CRUD, writes to a sql database, secured using JWT
+* * For simplicity users are now hardcoded but asp.net net core identity can be added
+* * * Users: Username = "heisenberg", Password = "IAmTheOneWhoKnocks" and Username = "tyrion", Password="IDrinkAndIKnowThings"
+* * Swagger and Swagger UI are used in API
+* Angular App - UI used for companies CRUD talk to API. User neeeds to be logged in to be able to access companies
+* Database project - used to retain information about database structure and to seed data
+* Unit tests - has some unit tests, more are needed for better coverage
+
 ## Requirements
 * [Node v10.16.0 LTS or higher](https://nodejs.org/en/)
 * [Sql server 2014 or higher](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
@@ -24,4 +34,3 @@
 * Go to src\CodeChallenge.Angular\ClientApp\src\main.ts and replace 'https://localhost:44302' with 'http://localhost:58849'
 * Build
 * Open in a browser angular client app: [http://localhost:49323](http://localhost:49323)
-
